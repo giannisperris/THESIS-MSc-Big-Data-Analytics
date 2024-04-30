@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <th>Topic</th>
-        <td><em></em></td>
+        <td><em>Crime Data Analysis in LA Using ML Techniques</em></td>
     </tr>
     <tr>
         <th>Student</th>
