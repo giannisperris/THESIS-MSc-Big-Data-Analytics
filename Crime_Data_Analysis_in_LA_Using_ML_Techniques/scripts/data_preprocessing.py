@@ -110,7 +110,31 @@ def preprocess_data(df):
 
     return df, df_combined
 
-if __name__ == "__main__":
+from data_loader import load
+from data_cleaning import clean_data
+from data_preprocessing import preprocess_data
+from eda_analysis import eda
+from ml_analysis import ml_analysis
+
+# XXX: Some paths are relative to current and looking for Crime_Data_Analysis_in_LA_Using_ML_Techniques
+# Hence I need to run the code from the root directory: 
+# python Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts\run_project.py
+
+def main():
+    # 
+    print('Running project...')
+    print("loading")
+    load()
+    print("cleaning")	
+    clean_data()
+    print("preprocessing")
+    preprocess_data()
+    print("eda")
+    eda()
+    print("ml analysis")
+    ml_analysis()
+
+def preprocess():
    
     df_cleaned = pd.read_pickle("Crime_Data_Analysis_in_LA_Using_ML_Techniques/pickle_files/cleaned_data.pkl")
     df_preprocessed, df_combined = preprocess_data(df_cleaned)

@@ -34,7 +34,7 @@ def clean_data(df):
 
     return df
 
-if __name__ == "__main__":
+def clean():
     
     df = pd.read_pickle("Crime_Data_Analysis_in_LA_Using_ML_Techniques/pickle_files/loaded_data.pkl")
     df_cleaned = clean_data(df)

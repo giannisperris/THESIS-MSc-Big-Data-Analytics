@@ -14,7 +14,7 @@ def load_data():
     df_combined = pd.read_pickle("Crime_Data_Analysis_in_LA_Using_ML_Techniques/pickle_files/final_data.pkl")
     return df, df_combined
 
-if __name__ == "__main__":
+def ml_analysis():
     df, df_combined = load_data()
 
     scaler = StandardScaler()

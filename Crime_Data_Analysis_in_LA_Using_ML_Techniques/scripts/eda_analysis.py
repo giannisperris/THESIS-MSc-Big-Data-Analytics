@@ -6,9 +6,9 @@ from folium.plugins import HeatMap
 import scipy.stats as stats
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
+import os
 
-if __name__ == "__main__":
-
+def eda():
     df = pd.read_pickle("Crime_Data_Analysis_in_LA_Using_ML_Techniques/pickle_files/preprocessed_data.pkl")
     df_combined = pd.read_pickle("Crime_Data_Analysis_in_LA_Using_ML_Techniques/pickle_files/final_data.pkl")
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     plt.title('Crime Severity vs Victim Age')
     plt.xlabel('Crime Severity')
     plt.ylabel('Victim Age')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Severity_vs_Victim_Age.png')
 
     plt.figure(figsize=(12, 6))
     sns.countplot(x='Crime Severity', hue='Victim Sex', data=df)
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     plt.xlabel('Crime Severity')
     plt.ylabel('Count')
     plt.legend(title='Victim Sex', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Severity_vs_Victim_Sex.png')
 
     reported_freq = df['Date Reported'].value_counts().sort_index()
     occurred_freq = df['Date Occurred'].value_counts().sort_index()
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     plt.title('Distribution of Date Reported and Date Occurred (Moving Average)')
     plt.legend()
     plt.grid(True)
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Distribution_of_Date_Reported_and_Date_Occurred.png')
 
     df['Date Difference'] = (df['Date Reported'] - df['Date Occurred']).dt.days
     
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     plt.ylabel('Frequency')
     plt.title('Difference Between Date Reported and Date Occurred')
     plt.grid(True)
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Difference_Between_Date_Reported_and_Date_Occurred.png')
 
     df['Latitude'] = pd.to_numeric(df['Latitude'], errors='coerce')
     df['Longitude'] = pd.to_numeric(df['Longitude'], errors='coerce')
@@ -70,42 +70,42 @@ if __name__ == "__main__":
     plt.title('Crime Distribution by Area')
     plt.xlabel('Count')
     plt.ylabel('Area')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Distribution_by_Area.png')
 
     plt.figure(figsize=(12, 6))
     sns.histplot(df['Victim Age'], bins=30, kde=True)
     plt.title('Distribution of Victim Age')
     plt.xlabel('Victim Age')
     plt.ylabel('Frequency')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Distribution_of_Victim_Age.png')
 
     plt.figure(figsize=(12, 6))
     sns.countplot(x='Victim Sex', data=df, order=df['Victim Sex'].value_counts().index)
     plt.title('Crime Distribution by Victim Sex')
     plt.xlabel('Victim Sex')
     plt.ylabel('Count')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Distribution_by_Victim_Sex.png')
 
     plt.figure(figsize=(12, 6))
     sns.countplot(x='Month', data=df, order=df['Month'].value_counts().index)
     plt.title('Crime Distribution by Month')
     plt.xlabel('Month')
     plt.ylabel('Count')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Distribution_by_Month.png')
 
     plt.figure(figsize=(12, 6))
     sns.countplot(x='Day of Week', data=df, order=df['Day of Week'].value_counts().index)
     plt.title('Crime Distribution by Day of the Week')
     plt.xlabel('Day of the Week')
     plt.ylabel('Count')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Distribution_by_Day_of_Week.png')
 
     plt.figure(figsize=(12, 6))
     sns.countplot(x='Victim Descent', data=df, order=df['Victim Descent'].value_counts().index)
     plt.title('Crime Distribution by Victim Descent')
     plt.xlabel('Victim Descent')
     plt.ylabel('Count')
-    plt.show()
+    plt.savefig('Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/Crime_Distribution_by_Victim_Descent.png')
 
     data_male = df[df['Victim Sex'] == 'M']['Victim Age'].dropna()
     data_female = df[df['Victim Sex'] == 'F']['Victim Age'].dropna()
@@ -129,3 +129,5 @@ if __name__ == "__main__":
     anova_table = sm.stats.anova_lm(model, typ=2)
 
     print(anova_table)
+
+eda()
