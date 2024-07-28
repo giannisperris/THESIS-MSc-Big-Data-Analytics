@@ -4,6 +4,6 @@ __pycache__/
 .DS_Store
 *.pkl
 
-Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/*
-!Crime_Data_Analysis_in_LA_Using_ML_Techniques/eda_results/.gitkeep
+*.png
+
 
