@@ -9,24 +9,33 @@ from ml_analysis import ml_analysis
 # python Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts\run_project.py
 
 def main():
-    # 
     print('Running project...')
     print("loading")
     load()
-    print("cleaning")	
+    print("Data loaded successfully.")
+    
+    print("cleaning")    
     clean()
+    print("Data cleaned successfully.")
+    
     print("preprocessing")
     preprocess()
+    print("Data preprocessed successfully.")
+    
     print("eda")
     eda()
+    print("EDA completed successfully.")
+    
     print("ml analysis")
     ml_analysis()
+    print("ML analysis completed successfully.")
 
 if __name__ == '__main__':
     main()
 
 
+
 ## For running Dashboards : 
-# \Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run crime_dashboard.py
-# \Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run propability_dashboard.py
+# .\Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run crime_dashboard.py
+# .\Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run propability_dashboard.py
   
