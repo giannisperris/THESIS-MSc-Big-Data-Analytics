@@ -24,3 +24,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+## For running Dashboards : 
+# \Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run crime_dashboard.py
+# \Crime_Data_Analysis_in_LA_Using_ML_Techniques\scripts> python -m streamlit run propability_dashboard.py
+  
